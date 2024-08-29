@@ -12,13 +12,12 @@ ou
 ```
 git clone --recurse-submodules caminho_projeto novo_nome_projeto
 ```
+
+## QUANDO NECESSÁRIO AJUSTE AS PERMISSÕES DE DIRETÓRIOS E ARQUIVOS
 ALTERAR O PROPIETÁRIO DO DIRETÓRIO DO PROJETO PARA O USUÁRIO HOST
-```
 ```
 sudo chown -R $USER:$USER /caminho_do_projeto
 ```
-
-## QUANDO NECESSÁRIO AJUSTE AS PERMISSÕES DE DIRETÓRIOS E ARQUIVOS
 
 ## ACESSE O DIRETÓRIO DO PROJETO
 ```sh

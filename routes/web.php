@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PositionController;
 use App\Http\Controllers\RecoverController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -8,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\RolePermissionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WorkloadController;
 use Illuminate\Support\Facades\Route;
 
 ###################### ROTAS PÚBLICAS ##########################
@@ -98,5 +103,16 @@ Route::group(['middleware' => 'auth'], function () {
     /** Rotas das permissões */
     Route::get('/permissoes/{role}', [RolePermissionController::class, 'index'])->name('role-permission.index')->middleware('permission:role-index');
     Route::post('/permissoes/{role}/{permission}', [RolePermissionController::class, 'update'])->name('role-permission.update')->middleware('permission:role-update');
+
+    /** Rotas REP-A */
+    Route::get('/colaboradores', [EmployeeController::class, 'index'])->name('employee.index');
+
+    Route::get('/empresa', [CompanyController::class, 'index'])->name('company.index');
+
+    Route::get('/setores', [DepartmentController::class, 'index'])->name('department.index');
+
+    Route::get('/cargos', [PositionController::class, 'index'])->name('position.index');
+
+    Route::get('/jornadas', [WorkloadController::class, 'index'])->name('workload.index');
 });
 ################################################################

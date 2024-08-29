@@ -60,6 +60,30 @@
                         </a>
                     @endcan
 
+                    <div class="sb-sidenav-menu-heading">REP-A</div>
+                    @php
+                        $empresaActive = in_array($menu, ['company', 'department', 'cargos-funcoes']);
+                    @endphp
+                    <a class="nav-link collapsed {{ $empresaActive ? 'active' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="{{ $empresaActive ? 'true' : 'false' }}" aria-controls="collapseLayouts">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-building-user"></i></div>
+                        Empresa
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse {{ $empresaActive ? 'show' : '' }}" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a @class(['nav-link',]) href="{{ route('company.index') }}">{{ env('COMPANY') }}</a>
+                            <a @class(['nav-link',]) href="{{ route('department.index') }}">Setores</a>
+                            <a @class(['nav-link',]) href="{{ route('position.index') }}">Cargos e Funções</a>
+                        </nav>
+                    </div>
+                    <a @class(['nav-link', 'active'=>isset($menu) && $menu == 'employees']) href="{{ route('employee.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-people-group"></i></div>
+                        Colaboradores
+                    </a>
+                    <a @class(['nav-link', 'active'=>isset($menu) && $menu == 'jornadas']) href="{{ route('workload.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-business-time"></i></div>
+                        Jornadas
+                    </a>
                     <a class="nav-link" href="{{ route('logout.process') }}">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
                         Sair
